@@ -1,0 +1,49 @@
+@prefixCls: ~'rc-camera';
+
+.@{prefixCls} {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #F8F8F9;
+
+  &__container {
+    width: 100%;
+    height: 438px;
+
+    > video {
+      object-fit: fill;
+    }
+
+    > canvas {
+      display: none;
+      width: 100%;
+      height: 400px;
+    }
+  }
+
+  &__operation {
+    position: relative;
+    top: -5px;
+    padding: 35px 0;
+    text-align: center;
+    width: 100%;
+    background: linear-gradient(#fff, #9C9C9C);
+
+    > button {
+      height: 65px;
+      width: 65px;
+      outline: none;
+      cursor: pointer;
+      line-height: 136px;
+      background: #6477FF;
+      border-radius: 100px;
+      border: 2px solid #fff;
+      opacity: 0.7;
+
+      &:focus,
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
