@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { playClickAudio } from './utils/utils';
 import './camera.less';
 
 export interface ICameraProps {
@@ -53,7 +54,8 @@ const Camera: React.FC<ICameraProps> = (props) => {
     context.drawImage(video, 0, 0, width, height);
     // 获取图片base64
     const image = canvas.toDataURL('image/jpeg');
-    console.log(image);
+    // 播放拍照音频
+    playClickAudio();
     onPhotograph && onPhotograph(image);
   };
 
