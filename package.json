@@ -27,7 +27,8 @@
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=16.0.0"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "dependencies": {
     "classnames": "^2.2.6"

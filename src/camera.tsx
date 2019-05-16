@@ -6,7 +6,7 @@ export interface ICameraProps {
   className?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
-  onPhotograph: () => void;
+  onPhotograph: (image: string) => void;
 }
 
 const Camera: React.FC<ICameraProps> = (props) => {
@@ -44,6 +44,19 @@ const Camera: React.FC<ICameraProps> = (props) => {
     }
   }, []);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    const video: HTMLVideoElement = videoEl.current;
+    const canvas: HTMLCanvasElement = canvasEl.current;
+    // 处理为图片
+    const context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, width, height);
+    // 获取图片base64
+    const image = canvas.toDataURL('image/jpeg');
+    console.log(image);
+    onPhotograph && onPhotograph(image);
+  };
+
   return (
     <div
       className={classNames(className, {
@@ -67,7 +80,7 @@ const Camera: React.FC<ICameraProps> = (props) => {
         />
       </div>
       <div className={`${prefixCls}__operation`}>
-        <button />
+        <button onClick={handleClick} />
       </div>
     </div>
   )
