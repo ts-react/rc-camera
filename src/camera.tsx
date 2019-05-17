@@ -7,6 +7,7 @@ export interface ICameraProps {
   className?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
+  videoWidth?: number;
   onPhotograph: (image: string) => void;
 }
 
@@ -15,22 +16,15 @@ const Camera: React.FC<ICameraProps> = (props) => {
     prefixCls,
     className,
     style,
+    videoWidth,
     onPhotograph
   } = props;
-  const containerEl = React.useRef(null);
   const videoEl = React.useRef(null);
   const canvasEl = React.useRef(null);
   const [width, setWidth] = React.useState<number>(0);
   const [height, setHeight] = React.useState<number>(0);
 
   React.useEffect(() => {
-    const container: HTMLElement = containerEl.current;
-
-    if (container) {
-      setWidth(container.offsetWidth);
-      setHeight(container.offsetHeight);
-    }
-
     if (navigator.getUserMedia) {
       navigator.getUserMedia({
         audio: false,
@@ -59,20 +53,36 @@ const Camera: React.FC<ICameraProps> = (props) => {
     onPhotograph && onPhotograph(image);
   };
 
+  // 获取Video标签宽高
+  const handleLoadedMetadata = () => {
+    const video: HTMLVideoElement = videoEl.current;
+
+    if (video) {
+      setWidth(video.offsetWidth);
+      setHeight(video.offsetHeight);
+    }
+  };
+
   return (
     <div
       className={classNames(className, {
         [`${prefixCls}`]: true
       })}
-      style={style}
+      style={{
+        ...style,
+        width: videoWidth
+      }}
     >
       <div
-        ref={containerEl}
         className={`${prefixCls}__container`}
+        style={{
+          width,
+          height
+        }}
       >
         <video
-          height={height}
-          width={width}
+          width={videoWidth}
+          onLoadedMetadata={handleLoadedMetadata}
           ref={videoEl}
         />
         <canvas
@@ -89,7 +99,8 @@ const Camera: React.FC<ICameraProps> = (props) => {
 };
 
 Camera.defaultProps = {
-  prefixCls: 'rc-camera'
+  prefixCls: 'rc-camera',
+  videoWidth: 700
 };
 
 export default Camera;
