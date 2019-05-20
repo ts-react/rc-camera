@@ -19,8 +19,9 @@
   "scripts": {
     "bootstrap": "yarn || npm i",
     "doc:dev": "umi-library doc dev",
-    "doc:build": "umi-library doc build",
+    "doc:build": "cross-env DOCZ_BASE=/rc-camera/ umi-library doc build",
     "build": "umi-library build",
+    "gh-pages": "yarn doc:build && gh-pages -d .docz/dist",
     "test": "umi-test"
   },
   "repository": "git@github.com:ts-react/rc-camera.git",
@@ -37,6 +38,8 @@
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
+    "cross-env": "^5.2.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "typescript": "^3.4.5",
