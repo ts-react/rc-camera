@@ -1,7 +1,7 @@
 {
-  "vendors.js": "/static/js/vendors.c636a766.js",
-  "app.js": "/static/js/app.9ec9f8587de1c9e9769a.js",
-  "src-index.css": "/static/css/src-index.9ec9f8587de1c9e9769a.css",
-  "src-index.js": "/static/js/src-index.7ca18ed6.js",
-  "index.html": "/index.html"
+  "vendors.js": "/rc-camera/static/js/vendors.78756e35.js",
+  "app.js": "/rc-camera/static/js/app.cbd0b9753d2e9839f3a8.js",
+  "src-index.css": "/rc-camera/static/css/src-index.cbd0b9753d2e9839f3a8.css",
+  "src-index.js": "/rc-camera/static/js/src-index.7ca18ed6.js",
+  "index.html": "/rc-camera/index.html"
 }
