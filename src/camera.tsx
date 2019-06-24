@@ -8,7 +8,7 @@ export interface ICameraProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   videoWidth?: number;
-  onPhotograph: (image: string) => void;
+  onPhotograph?: (image: string) => void;
 }
 
 const Camera: React.FC<ICameraProps> = (props) => {
